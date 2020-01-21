@@ -1,7 +1,5 @@
 package spring.session.EvalCand.services;
 
-import java.util.List;
-
 import spring.session.EvalCand.entities.QR;
 
 
