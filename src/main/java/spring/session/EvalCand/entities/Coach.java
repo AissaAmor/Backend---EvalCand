@@ -1,29 +1,53 @@
 package spring.session.EvalCand.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import spring.session.EvalCand.configuration.BCryptManagerUtil;
 
 @Entity
 public class Coach {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Id_coach;
 	private String nom;
 	private String prenom;
-	private String Username;
-	private String Password;
+	@NotNull
+	private String username;
+	private String password;
 	private Evaluation evaluation;
-	
+	private List<Coach> ListCoach = new ArrayList<Coach>();
+
+//	@NotNull
+//	private String username;
+//	private String password;
+
+	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation,
+			List<Coach> listCoach) {
+		super();
+		Id_coach = id_coach;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+		this.evaluation = evaluation;
+		ListCoach = listCoach;
+	}
+
 	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation) {
 		super();
 		Id_coach = id_coach;
 		this.nom = nom;
 		this.prenom = prenom;
-		Username = username;
-		Password = password;
+		this.username = username;
+		this.password = password;
 		this.evaluation = evaluation;
 	}
 
@@ -52,19 +76,19 @@ public class Coach {
 	}
 
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = BCryptManagerUtil.passwordEncoder().encode(password);
 	}
 
 	public Evaluation getEvaluation() {
@@ -75,11 +99,18 @@ public class Coach {
 		this.evaluation = evaluation;
 	}
 
+	public List<Coach> getListCoach() {
+		return ListCoach;
+	}
+
+	public void setListCoach(List<Coach> listCoach) {
+		ListCoach = listCoach;
+	}
+
 	@Override
 	public String toString() {
-		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", Username=" + Username
-				+ ", Password=" + Password + ", evaluation=" + evaluation + "]";
+		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", username=" + username
+				+ ", password=" + password + ", evaluation=" + evaluation + ", ListCoach=" + ListCoach + "]";
 	}
-	
-		
+
 }
