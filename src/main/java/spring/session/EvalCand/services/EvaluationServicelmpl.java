@@ -7,7 +7,7 @@ import spring.session.EvalCand.entities.Evaluation;
 import spring.session.EvalCand.repositories.EvaluationRepository;
 
 
-@Service("Codageservice")
+@Service("EvaluationService")
 public class EvaluationServicelmpl implements EvaluationService {
 
 	@Autowired

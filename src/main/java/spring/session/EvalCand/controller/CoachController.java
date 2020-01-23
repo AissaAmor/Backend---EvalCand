@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import spring.session.EvalCand.configuration.JwtTokenUtil;
 import spring.session.EvalCand.entities.Coach;
+import spring.session.EvalCand.entities.JwtResponse;
 import spring.session.EvalCand.repositories.CoachRepository;
 import spring.session.EvalCand.services.CoachService;
 
