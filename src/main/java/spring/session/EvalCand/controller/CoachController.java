@@ -33,8 +33,8 @@ public class CoachController {
 	private JwtTokenUtil jwtTokenUtil;
 
 	
-	@Autowired
-	private JwtUserDetailsService userDetailsService;
+//	@Autowired
+//	private JwtUserDetailsService userDetailsService;
 
 	@RequestMapping(path = "add", method = RequestMethod.POST)
 	public void addCoach(@RequestBody Coach coach) {

@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
+
 @Entity
 public class QR {
 
@@ -22,13 +23,20 @@ public class QR {
 	private String remarque;
 	private String Reponse;
 	private String ReponseCandidat;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "Id_evaluation")
-	private int Id_evaluation;
+	@ManyToOne
+	private Evaluation evaluation;
+		
 	
-	
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+
 	public QR(int id_QR, String titre, String question, String remarque, String reponse, String reponseCandidat,
-			int id_evaluation) {
+			Evaluation evaluation) {
 		super();
 		Id_QR = id_QR;
 		Titre = titre;
@@ -36,14 +44,12 @@ public class QR {
 		this.remarque = remarque;
 		Reponse = reponse;
 		ReponseCandidat = reponseCandidat;
-		Id_evaluation = id_evaluation;
+//		this.evaluation = evaluation;
 	}
-
 
 	public int getId_QR() {
 		return Id_QR;
 	}
-
 
 	public void setId_QR(int id_QR) {
 		Id_QR = id_QR;
@@ -99,24 +105,13 @@ public class QR {
 		ReponseCandidat = reponseCandidat;
 	}
 
-
-	public int getId_evaluation() {
-		return Id_evaluation;
-	}
-
-
-	public void setId_evaluation(int id_evaluation) {
-		Id_evaluation = id_evaluation;
-	}
-
-
 	@Override
 	public String toString() {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
-				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", Id_evaluation=" + Id_evaluation
-				+ "]";
+				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + "]";
 	}
-	
+
+		
 	
 	
 }

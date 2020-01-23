@@ -22,12 +22,26 @@ public class Coach {
 	@NotNull
 	private String username;
 	private String password;
-	private Evaluation evaluation;
-	private List<Coach> ListCoach = new ArrayList<Coach>();
+	
+	//private List<Coach> ListCoach = new ArrayList<Coach>();
 
-//	@NotNull
-//	private String username;
-//	private String password;
+
+
+//	public Evaluation getEvaluation() {
+//		return evaluation;
+//	}
+//
+//	public void setEvaluation(Evaluation evaluation) {
+//		this.evaluation = evaluation;
+//	}
+//
+//	public List<Coach> getListCoach() {
+//		return ListCoach;
+//	}
+//
+//	public void setListCoach(List<Coach> listCoach) {
+//		ListCoach = listCoach;
+//	}
 
 	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation,
 			List<Coach> listCoach) {
@@ -37,19 +51,11 @@ public class Coach {
 		this.prenom = prenom;
 		this.username = username;
 		this.password = password;
-		this.evaluation = evaluation;
-		ListCoach = listCoach;
+
+//		ListCoach = listCoach;
 	}
 
-	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation) {
-		super();
-		Id_coach = id_coach;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.username = username;
-		this.password = password;
-		this.evaluation = evaluation;
-	}
+
 
 	public int getId_coach() {
 		return Id_coach;
@@ -91,26 +97,13 @@ public class Coach {
 		this.password = BCryptManagerUtil.passwordEncoder().encode(password);
 	}
 
-	public Evaluation getEvaluation() {
-		return evaluation;
-	}
-
-	public void setEvaluation(Evaluation evaluation) {
-		this.evaluation = evaluation;
-	}
-
-	public List<Coach> getListCoach() {
-		return ListCoach;
-	}
-
-	public void setListCoach(List<Coach> listCoach) {
-		ListCoach = listCoach;
-	}
-
 	@Override
 	public String toString() {
 		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", username=" + username
-				+ ", password=" + password + ", evaluation=" + evaluation + ", ListCoach=" + ListCoach + "]";
+				+ ", password=" + password + "]";
 	}
 
+	
+
+		
 }

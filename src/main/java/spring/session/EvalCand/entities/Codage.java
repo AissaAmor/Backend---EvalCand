@@ -18,19 +18,30 @@ public class Codage {
 	private String enonce;
 	private String reponse;
 	private String ReponseCandidat;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "Id_evaluation")
-	private int Id_evaluation;
+	@ManyToOne	
+	private Evaluation evaluation;
 	
+	
+	
+	
+
 	public Codage(int id_Codage, String titre, String enonce, String reponse, String reponseCandidat,
-			int id_evaluation) {
+			Evaluation evaluation) {
 		super();
 		Id_Codage = id_Codage;
 		Titre = titre;
 		this.enonce = enonce;
 		this.reponse = reponse;
 		ReponseCandidat = reponseCandidat;
-		Id_evaluation = id_evaluation;
+		this.evaluation = evaluation;
+	}
+
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
 	}
 
 	public int getId_Codage() {
@@ -73,19 +84,12 @@ public class Codage {
 		ReponseCandidat = reponseCandidat;
 	}
 
-	public int getId_evaluation() {
-		return Id_evaluation;
-	}
-
-	public void setId_evaluation(int id_evaluation) {
-		Id_evaluation = id_evaluation;
-	}
-
 	@Override
 	public String toString() {
 		return "Codage [Id_Codage=" + Id_Codage + ", Titre=" + Titre + ", enonce=" + enonce + ", reponse=" + reponse
-				+ ", ReponseCandidat=" + ReponseCandidat + ", Id_evaluation=" + Id_evaluation + "]";
+				+ ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
 	}
+
 	
 	
 	

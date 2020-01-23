@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import spring.session.EvalCand.entities.Coach;
 import spring.session.EvalCand.repositories.CoachRepository;
 
-@Service("Coachservice")
+@Service("CoachService")
 public class CoachServicelmpl implements CoachService {
 
 	@Autowired
