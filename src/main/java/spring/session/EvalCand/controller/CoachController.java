@@ -32,11 +32,10 @@ public class CoachController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
-	
 //	@Autowired
 //	private JwtUserDetailsService userDetailsService;
 
-	@RequestMapping(path = "add", method = RequestMethod.POST)
+	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	public void addCoach(@RequestBody Coach coach) {
 		Coachservice.AjoutCoach(coach);
 	}
@@ -52,14 +51,14 @@ public class CoachController {
 		Coach coach = Coachservice.getCoachById(id);
 		Coachservice.deleteCoach(coach);
 	}
+
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody Coach authenticationRequest) throws Exception {
 
 		Coach coach = Coachservice.loadByUsername(authenticationRequest.getUsername());
-			final String token = jwtTokenUtil.generateToken(coach);
-			return ResponseEntity.ok(new JwtResponse(token));
-			
-		} 
-	
-	
+		final String token = jwtTokenUtil.generateToken(coach);
+		return ResponseEntity.ok(new JwtResponse(token));
+
+	}
+
 }
