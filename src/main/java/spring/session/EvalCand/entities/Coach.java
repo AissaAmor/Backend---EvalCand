@@ -23,25 +23,6 @@ public class Coach {
 	private String username;
 	private String password;
 	
-	//private List<Coach> ListCoach = new ArrayList<Coach>();
-
-
-
-//	public Evaluation getEvaluation() {
-//		return evaluation;
-//	}
-//
-//	public void setEvaluation(Evaluation evaluation) {
-//		this.evaluation = evaluation;
-//	}
-//
-//	public List<Coach> getListCoach() {
-//		return ListCoach;
-//	}
-//
-//	public void setListCoach(List<Coach> listCoach) {
-//		ListCoach = listCoach;
-//	}
 
 	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation,
 			List<Coach> listCoach) {
@@ -53,6 +34,12 @@ public class Coach {
 		this.password = password;
 
 //		ListCoach = listCoach;
+	}
+
+
+
+	public Coach() {
+		super();
 	}
 
 
@@ -102,8 +89,5 @@ public class Coach {
 		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", username=" + username
 				+ ", password=" + password + "]";
 	}
-
-	
-
-		
+			
 }

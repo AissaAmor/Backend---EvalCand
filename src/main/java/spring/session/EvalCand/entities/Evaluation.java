@@ -39,16 +39,6 @@ public class Evaluation {
 	private List<Language> language;
 	
 	
-	public List<Projet> getProjet() {
-		return projet;
-	}
-
-
-
-	public void setProjet(List<Projet> projet) {
-		this.projet = projet;
-	}
-
 
 
 	public List<Codage> getCodage() {
@@ -139,9 +129,4 @@ public class Evaluation {
 		return "Evaluation [Id_evaluation=" + Id_evaluation + ", Titre=" + Titre + ", Etat=" + Etat + ", Duree=" + Duree
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
-
-	
-
-	
-	
 }

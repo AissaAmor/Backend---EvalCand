@@ -92,13 +92,11 @@ public class Language {
 		this.reponse = reponse;
 	}
 
-	
 
 	@Override
 	public String toString() {
 		return "Language [Id_Language=" + Id_Language + ", Titre=" + Titre + ", enonce=" + enonce + ", reponse="
 				+ reponse + ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
-	}
-		
+	}	
 	
 }

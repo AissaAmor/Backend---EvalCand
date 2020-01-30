@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +27,8 @@ public class CoachController {
 	@Autowired
 	CoachService Coachservice;
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+//	@Autowired
+//	private AuthenticationManager authenticationManager;
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 
@@ -36,7 +36,7 @@ public class CoachController {
 //	@Autowired
 //	private JwtUserDetailsService userDetailsService;
 
-	@RequestMapping(path = "add", method = RequestMethod.POST)
+	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	public void addCoach(@RequestBody Coach coach) {
 		Coachservice.AjoutCoach(coach);
 	}
@@ -45,7 +45,11 @@ public class CoachController {
 	public List<Coach> getAll() {
 		return Coachservice.getAll();
 	}
-
+	
+	@RequestMapping(path = "/findcoach/{id}", method = RequestMethod.GET)
+	public Coach getCoach(@PathVariable int id) {
+		return Coachservice.getCoachById(id);
+		}
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void deleteCoach(@PathVariable("id") Integer id) {
 

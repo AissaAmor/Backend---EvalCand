@@ -47,7 +47,7 @@ public class CoachServicelmpl implements CoachService {
 	public Coach loadByUsername(String username) {
 
 		TypedQuery<Coach> query = (TypedQuery<Coach>) em
-				.createQuery("SELECT u FROM Employe u WHERE u.username = :username", Coach.class);
+				.createQuery("SELECT u FROM Coach u WHERE u.username = :username", Coach.class);
 		Coach coach = query.setParameter("username", username).getSingleResult();
 		return coach;
 
