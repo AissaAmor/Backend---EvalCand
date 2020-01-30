@@ -11,6 +11,7 @@ public interface EvaluationService {
 	
 	public void AjoutEvaluation (Evaluation evaluation);
 	public void deleteEvaluation (Evaluation evaluation);
+	public void updateEvaluation (Evaluation evaluation);
 	public Evaluation getEvalById(Integer id);
 	List<Evaluation> getAll();
 }

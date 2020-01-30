@@ -1,8 +1,11 @@
 package spring.session.EvalCand.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import spring.session.EvalCand.entities.Evaluation;
 
-public interface EvaluationRepository extends  JpaRepository<Evaluation, Integer> {
+@Repository("EvaluationRepository")
+public interface EvaluationRepository extends JpaRepository<Evaluation, Integer> {
 
 }
