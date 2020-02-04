@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import spring.session.EvalCand.entities.Candidat;
 
-
 @Repository("CandidatRepository")
 public interface CandidatRepository  extends JpaRepository<Candidat, Integer> {
 
