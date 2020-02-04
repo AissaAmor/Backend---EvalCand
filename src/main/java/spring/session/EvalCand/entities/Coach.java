@@ -22,25 +22,6 @@ public class Coach {
 	private String username;
 	private String password;
 	
-	//private List<Coach> ListCoach = new ArrayList<Coach>();
-
-
-
-//	public Evaluation getEvaluation() {
-//		return evaluation;
-//	}
-//
-//	public void setEvaluation(Evaluation evaluation) {
-//		this.evaluation = evaluation;
-//	}
-//
-//	public List<Coach> getListCoach() {
-//		return ListCoach;
-//	}
-//
-//	public void setListCoach(List<Coach> listCoach) {
-//		ListCoach = listCoach;
-//	}
 
 	// Default constructor
 	// --> Always define a default constructor for any entity
@@ -58,6 +39,10 @@ public class Coach {
 		this.password = password;
 
 //		ListCoach = listCoach;
+	}
+  
+	public Coach() {
+		super();
 	}
 
 	public int getId_coach() {
@@ -105,8 +90,5 @@ public class Coach {
 		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", username=" + username
 				+ ", password=" + password + "]";
 	}
-
-	
-
-		
+			
 }

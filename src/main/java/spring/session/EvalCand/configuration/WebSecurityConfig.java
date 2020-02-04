@@ -37,18 +37,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+//	@Bean
+//	@Override
+//	public AuthenticationManager authenticationManagerBean() throws Exception {
+//		return super.authenticationManagerBean();
+//	}
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 // We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 // dont authenticate this particular request
+
 				.authorizeRequests().antMatchers("/coach/authenticate", "/coach/add/").permitAll().
+
 // all other requests need to be authenticated
 				anyRequest().authenticated().and().
 // make sure we use stateless session; session won't be used to

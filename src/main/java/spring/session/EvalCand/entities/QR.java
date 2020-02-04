@@ -44,7 +44,7 @@ public class QR {
 		this.remarque = remarque;
 		Reponse = reponse;
 		ReponseCandidat = reponseCandidat;
-//		this.evaluation = evaluation;
+		this.evaluation = evaluation;
 	}
 
 	public int getId_QR() {
@@ -108,10 +108,6 @@ public class QR {
 	@Override
 	public String toString() {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
-				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + "]";
+				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
 	}
-
-		
-	
-	
 }

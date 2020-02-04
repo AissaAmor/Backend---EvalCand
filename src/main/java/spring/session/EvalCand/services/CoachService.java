@@ -10,6 +10,7 @@ import spring.session.EvalCand.entities.Coach;
 
 
 	public interface CoachService {
+		
 		Coach findbyUsername(String usernameOrEmail);
 		public void AjoutCoach(Coach coach);
 		public void deleteCoach(Coach coach);
