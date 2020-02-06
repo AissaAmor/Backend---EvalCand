@@ -1,9 +1,13 @@
 package spring.session.EvalCand.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -12,37 +16,87 @@ public class Evaluation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Id_evaluation;
-		
+
 	private String Titre;
 	private String Etat;
 	private int Duree;
-	private Coach coach;
-	private QR QR;
-	private Language language;
-	private Projet projet;
-	private Codage codage;
-	
-			
-	public Evaluation(int id_evaluation, String titre, String etat, int duree, Coach coach,
-			spring.session.EvalCand.entities.QR qR, Language language, Projet projet, Codage codage) {
+
+	@OneToMany(mappedBy = "evaluation", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	private List<QR> qr;
+
+	@OneToMany(mappedBy = "evaluation", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	private List<Projet> projet;
+
+	@OneToMany(mappedBy = "evaluation", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	private List<Codage> codage;
+
+	@OneToMany(mappedBy = "evaluation", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
+	private List<Language> language;
+
+	// Default constructor
+	// --> Always define a default constructor for any entity
+	public Evaluation() {
+		super();
+	}
+
+	public Evaluation(int id_evaluation, String titre, String etat, int duree, List<QR> qr, List<Projet> projet,
+			List<Codage> codage, List<Language> language) {
 		super();
 		Id_evaluation = id_evaluation;
 		Titre = titre;
 		Etat = etat;
 		Duree = duree;
-		this.coach = coach;
-		QR = qR;
-		this.language = language;
+		this.qr = qr;
 		this.projet = projet;
 		this.codage = codage;
+		this.language = language;
+	}
+	public Evaluation(String titre, String etat, int duree, List<QR> qr) {
+		super();
+		Titre = titre;
+		Etat = etat;
+		Duree = duree;
+		this.qr = qr;
+	}
+
+	public List<Projet> getProjet() {
+		return projet;
+	}
+
+	public void setProjet(List<Projet> projets) {
+		this.projet = projets;
+	}
+
+	public List<Codage> getCodage() {
+		return codage;
+	}
+
+	public void setCodage(List<Codage> codages) {
+		this.codage = codages;
+	}
+
+	public List<Language> getLanguage(){
+		return this.language;
+	}
+
+	public void setLanguage (List<Language> languages) {
+		this.language = languages;
+	}
+
+	public List<QR> getQr() {
+		return qr;
+	}
+
+	public void setQr(List<QR> listQR) {
+		this.qr = listQR;
 	}
 
 	public int getId_evaluation() {
 		return Id_evaluation;
 	}
 
-	public void setId_evaluation(int id_evaluation) {
-		Id_evaluation = id_evaluation;
+	public void setId_evaluation(int Id_evaluation) {
+		 this.Id_evaluation = Id_evaluation;
 	}
 
 	public String getTitre() {
@@ -69,51 +123,10 @@ public class Evaluation {
 		Duree = duree;
 	}
 
-	public Coach getCoach() {
-		return coach;
-	}
-
-	public void setCoach(Coach coach) {
-		this.coach = coach;
-	}
-
-	public QR getQR() {
-		return QR;
-	}
-
-	public void setQR(QR qR) {
-		QR = qR;
-	}
-
-	public Language getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
-
-	public Projet getProjet() {
-		return projet;
-	}
-
-	public void setProjet(Projet projet) {
-		this.projet = projet;
-	}
-
-	public Codage getCodage() {
-		return codage;
-	}
-
-	public void setCodage(Codage codage) {
-		this.codage = codage;
-	}
-
 	@Override
 	public String toString() {
 		return "Evaluation [Id_evaluation=" + Id_evaluation + ", Titre=" + Titre + ", Etat=" + Etat + ", Duree=" + Duree
-				+ ", coach=" + coach + ", QR=" + QR + ", language=" + language + ", projet=" + projet + ", codage="
-				+ codage + "]";
+				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
 
 		

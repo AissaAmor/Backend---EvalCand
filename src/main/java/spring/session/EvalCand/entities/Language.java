@@ -17,20 +17,39 @@ public class Language {
 	private String enonce;
 	private String reponse;
 	private String ReponseCandidat;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "Id_evaluation")
-	private int Id_evaluation;
+	@ManyToOne
+	private Evaluation evaluation;
 	
 	
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
+	}
+
+
 	public Language(int id_Language, String titre, String enonce, String reponse, String reponseCandidat,
-			int id_evaluation) {
+			Evaluation evaluation) {
 		super();
 		Id_Language = id_Language;
 		Titre = titre;
 		this.enonce = enonce;
 		this.reponse = reponse;
 		ReponseCandidat = reponseCandidat;
-		Id_evaluation = id_evaluation;
+		this.evaluation = evaluation;
+	}
+
+
+	public String getReponseCandidat() {
+		return ReponseCandidat;
+	}
+
+
+	public void setReponseCandidat(String reponseCandidat) {
+		ReponseCandidat = reponseCandidat;
 	}
 
 
@@ -73,32 +92,12 @@ public class Language {
 		this.reponse = reponse;
 	}
 
-
-	public String getReponseCandidat() {
-		return ReponseCandidat;
-	}
-
-
-	public void setReponseCandidat(String reponseCandidat) {
-		ReponseCandidat = reponseCandidat;
-	}
-
-
-	public int getId_evaluation() {
-		return Id_evaluation;
-	}
-
-
-	public void setId_evaluation(int id_evaluation) {
-		Id_evaluation = id_evaluation;
-	}
-
+	
 
 	@Override
 	public String toString() {
 		return "Language [Id_Language=" + Id_Language + ", Titre=" + Titre + ", enonce=" + enonce + ", reponse="
-				+ reponse + ", ReponseCandidat=" + ReponseCandidat + ", Id_evaluation=" + Id_evaluation + "]";
+				+ reponse + ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
 	}
-	
 	
 }

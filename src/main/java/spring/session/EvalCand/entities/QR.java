@@ -1,6 +1,7 @@
 package spring.session.EvalCand.entities;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -24,11 +27,28 @@ public class QR {
 	private String ReponseCandidat;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Id_evaluation")
-	private int Id_evaluation;
+	private Evaluation evaluation;
+
+
+
 	
+	public QR() {
+		super();
+	}
+
 	
+	public QR(String titre, String question, String remarque, String reponse, String reponseCandidat) {
+		super();
+		this.Titre = titre;
+		this.Question = question;
+		this.remarque = remarque;
+		this.Reponse = reponse;
+		this.ReponseCandidat = reponseCandidat;
+	}
+
+
 	public QR(int id_QR, String titre, String question, String remarque, String reponse, String reponseCandidat,
-			int id_evaluation) {
+			List<QR> listQR, Evaluation evaluation) {
 		super();
 		Id_QR = id_QR;
 		Titre = titre;
@@ -36,7 +56,7 @@ public class QR {
 		this.remarque = remarque;
 		Reponse = reponse;
 		ReponseCandidat = reponseCandidat;
-		Id_evaluation = id_evaluation;
+		this.evaluation = evaluation;
 	}
 
 
@@ -44,79 +64,61 @@ public class QR {
 		return Id_QR;
 	}
 
-
 	public void setId_QR(int id_QR) {
 		Id_QR = id_QR;
 	}
-
 
 	public String getTitre() {
 		return Titre;
 	}
 
-
 	public void setTitre(String titre) {
 		Titre = titre;
 	}
-
 
 	public String getQuestion() {
 		return Question;
 	}
 
-
 	public void setQuestion(String question) {
 		Question = question;
 	}
-
 
 	public String getRemarque() {
 		return remarque;
 	}
 
-
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
-
 
 	public String getReponse() {
 		return Reponse;
 	}
 
-
 	public void setReponse(String reponse) {
 		Reponse = reponse;
 	}
-
 
 	public String getReponseCandidat() {
 		return ReponseCandidat;
 	}
 
-
 	public void setReponseCandidat(String reponseCandidat) {
 		ReponseCandidat = reponseCandidat;
 	}
-
-
-	public int getId_evaluation() {
-		return Id_evaluation;
+	@JsonIgnore
+	public Evaluation getEvaluation() {
+		return evaluation;
 	}
-
-
-	public void setId_evaluation(int id_evaluation) {
-		Id_evaluation = id_evaluation;
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
 	}
-
-
 	@Override
 	public String toString() {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
-				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", Id_evaluation=" + Id_evaluation
-				+ "]";
+				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" +
+				 ", evaluation=" + evaluation + "]";
 	}
-	
-	
-	
+
 }
