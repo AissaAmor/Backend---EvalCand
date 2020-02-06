@@ -47,6 +47,17 @@ public class EvaluationServicelmpl implements EvaluationService {
 		
 		return Evaluationrepository.findAll() ;
 	}
-
 	
+	@Override
+	public void duplicateEval(Evaluation evaluation ) {
+		Evaluationrepository.save(evaluation);
+	}
+//	@Override
+//	public Object clone() {
+//	    try {
+//	        return (Evaluation) super.clone();
+//	    } catch (CloneNotSupportedException e) {
+//	        return new Evaluation(this.projet, this.getCodage(), this.getLanguage());
+//	    }
+//	}
 }
