@@ -26,6 +26,11 @@ public class Candidat {
 	}
 
 
+	public Candidat() {
+		super();
+	}
+
+
 	public int getId_Candidat() {
 		return Id_Candidat;
 	}
