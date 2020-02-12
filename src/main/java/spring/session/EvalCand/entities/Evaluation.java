@@ -31,11 +31,6 @@ public class Evaluation {
 
 	@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
 	private List<Language> language;
-<<<<<<< HEAD
-	
-	
-
-=======
 
 	// Default constructor
 	// --> Always define a default constructor for any entity
@@ -63,7 +58,6 @@ public class Evaluation {
 	public void setProjet(List<Projet> projet) {
 		this.projet = projet;
 	}
->>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
 
 	public List<Codage> getCodage() {
 		return codage;
@@ -126,8 +120,5 @@ public class Evaluation {
 		return "Evaluation [Id_evaluation=" + Id_evaluation + ", Titre=" + Titre + ", Etat=" + Etat + ", Duree=" + Duree
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
 }

@@ -21,7 +21,6 @@ public class Coach {
 	@NotNull
 	private String username;
 	private String password;
-	
 
 	// Default constructor
 	// --> Always define a default constructor for any entity
@@ -38,20 +37,9 @@ public class Coach {
 		this.username = username;
 		this.password = password;
 
-//		ListCoach = listCoach;
+		// ListCoach = listCoach;
 	}
 
-<<<<<<< HEAD
-
-
-	public Coach() {
-		super();
-	}
-
-
-
-=======
->>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
 	public int getId_coach() {
 		return Id_coach;
 	}
@@ -97,5 +85,5 @@ public class Coach {
 		return "Coach [Id_coach=" + Id_coach + ", nom=" + nom + ", prenom=" + prenom + ", username=" + username
 				+ ", password=" + password + "]";
 	}
-			
+
 }
