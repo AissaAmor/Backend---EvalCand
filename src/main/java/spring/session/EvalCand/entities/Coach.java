@@ -35,10 +35,7 @@ public class Coach {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-
 	}
-
-
 
 	public int getId_coach() {
 		return Id_coach;
