@@ -1,69 +1,47 @@
 package spring.session.EvalCand.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
-
 @Entity
 public class Evaluation {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Id_evaluation;
-		
+
 	private String Titre;
 	private String Etat;
 	private int Duree;
-	
-	
-	@OneToMany(mappedBy = "evaluation" , cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
 	private List<QR> qr;
-	
-	@OneToMany( mappedBy = "evaluation" , cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
 	private List<Projet> projet;
-	
-	@OneToMany( mappedBy = "evaluation" , cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
 	private List<Codage> codage;
 
-	@OneToMany( mappedBy = "evaluation" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
 	private List<Language> language;
+<<<<<<< HEAD
 	
 	
 
+=======
 
-	public List<Codage> getCodage() {
-		return codage;
+	// Default constructor
+	// --> Always define a default constructor for any entity
+	public Evaluation() {
+		super();
 	}
-
-
-
-	public void setCodage(List<Codage> codage) {
-		this.codage = codage;
-	}
-
-
-
-	public List<Language> getLanguage() {
-		return language;
-	}
-
-
-
-	public void setLanguage(List<Language> language) {
-		this.language = language;
-	}
-
-
 
 	public Evaluation(int id_evaluation, String titre, String etat, int duree, List<QR> qr, List<Projet> projet,
 			List<Codage> codage, List<Language> language) {
@@ -78,13 +56,34 @@ public class Evaluation {
 		this.language = language;
 	}
 
+	public List<Projet> getProjet() {
+		return projet;
+	}
 
+	public void setProjet(List<Projet> projet) {
+		this.projet = projet;
+	}
+>>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
+
+	public List<Codage> getCodage() {
+		return codage;
+	}
+
+	public void setCodage(List<Codage> codage) {
+		this.codage = codage;
+	}
+
+	public List<Language> getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(List<Language> language) {
+		this.language = language;
+	}
 
 	public List<QR> getQr() {
 		return qr;
 	}
-
-
 
 	public void setQr(List<QR> qr) {
 		this.qr = qr;
@@ -122,11 +121,13 @@ public class Evaluation {
 		Duree = duree;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Evaluation [Id_evaluation=" + Id_evaluation + ", Titre=" + Titre + ", Etat=" + Etat + ", Duree=" + Duree
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
 }

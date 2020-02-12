@@ -1,6 +1,5 @@
 package spring.session.EvalCand.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,6 +23,12 @@ public class Coach {
 	private String password;
 	
 
+	// Default constructor
+	// --> Always define a default constructor for any entity
+	public Coach() {
+		super();
+	}
+
 	public Coach(int id_coach, String nom, String prenom, String username, String password, Evaluation evaluation,
 			List<Coach> listCoach) {
 		super();
@@ -36,6 +41,7 @@ public class Coach {
 //		ListCoach = listCoach;
 	}
 
+<<<<<<< HEAD
 
 
 	public Coach() {
@@ -44,6 +50,8 @@ public class Coach {
 
 
 
+=======
+>>>>>>> 2532e44b0159a8e0cb00a482d5bdb5d055faea79
 	public int getId_coach() {
 		return Id_coach;
 	}
