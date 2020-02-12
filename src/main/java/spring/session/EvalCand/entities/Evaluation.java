@@ -120,5 +120,4 @@ public class Evaluation {
 		return "Evaluation [Id_evaluation=" + Id_evaluation + ", Titre=" + Titre + ", Etat=" + Etat + ", Duree=" + Duree
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
-
 }
