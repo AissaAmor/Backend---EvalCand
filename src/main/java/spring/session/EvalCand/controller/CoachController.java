@@ -1,15 +1,19 @@
 package spring.session.EvalCand.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import spring.session.EvalCand.configuration.BCryptManagerUtil;
@@ -49,6 +53,7 @@ public class CoachController {
 	// Ajout d'un coach
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	public void addCoach(@RequestBody Coach coach) {
+		coach.setPassword(BCryptManagerUtil.passwordEncoder().encode(coach.getPassword()));
 		Coachservice.AjoutCoach(coach);
 	}
 
@@ -56,6 +61,15 @@ public class CoachController {
 	@RequestMapping(path = "/addCandidat", method = RequestMethod.POST)
 	public void addCand(@RequestBody Candidat candidat) {
 		candidatservice.AjoutCandidat(candidat);
+
+	}
+
+	// Edit Coach
+	@PutMapping("/edit")
+	@ResponseBody
+	ResponseEntity<?> editCoach(@RequestBody Coach updateCoach) {
+		Coachservice.UpdateCoach(updateCoach);
+		return new ResponseEntity<>("update done", HttpStatus.ACCEPTED);
 
 	}
 
@@ -75,13 +89,29 @@ public class CoachController {
 		Coachservice.deleteCoach(coach);
 	}
 
+	public boolean comparePassword(String requestPass, String currentPassword) {
+		PasswordEncoder passencoder = new BCryptPasswordEncoder();
+		if (passencoder.matches(requestPass,currentPassword)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody Coach authenticationRequest) throws Exception {
 
 		Coach coach = Coachservice.loadByUsername(authenticationRequest.getUsername());
-		final String token = jwtTokenUtil.generateToken(coach);
-		return ResponseEntity.ok(new JwtResponse(token));
-
+		String reqPassword = authenticationRequest.getPassword();
+		String currentPass = coach.getPassword();
+		if (comparePassword(reqPassword, currentPass)) {
+			System.out.println("valid" + "/" + coach.getPassword());
+			final String token = jwtTokenUtil.generateToken(coach);
+			return ResponseEntity.ok(new JwtResponse(token));
+		} else {
+			System.out.println("invalid" + "/" + reqPassword + "/" + currentPass);
+			return ResponseEntity.ok(null);
+		}
 	}
 
 	private void send(int id) {
@@ -95,17 +125,17 @@ public class CoachController {
 	}
 
 	@RequestMapping(value = "/forget-password", method = RequestMethod.POST)
-	public String forgetPassword(@RequestBody Coach authenticationRequest) throws Exception {
+	public Integer forgetPassword(@RequestBody Coach authenticationRequest) throws Exception {
 
 		Coach coach = Coachservice.loadByEmail(authenticationRequest.getEmail());
 		this.send(coach.getId_coach());
 
-		return "Congratulations! Your mail has been send to the Coach.";
+		return coach.getId_coach();
 
 	}
 
 	@RequestMapping(value = "/reset-password/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> resetPassword(@PathVariable("id") Integer id, @RequestBody Coach resetPass ) {
+	public ResponseEntity<?> resetPassword(@PathVariable("id") Integer id, @RequestBody Coach resetPass) {
 
 		Coach coach = Coachservice.getCoachById(id);
 		String pass = resetPass.getPassword();
@@ -118,23 +148,14 @@ public class CoachController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 
-	
-//	@RequestMapping(value = "/update-password/{id}", method = RequestMethod.POST)
-//	public void resetPassword(@RequestBody Coach resetPass, @PathVariable("id") Integer id) {
-//		
-//		Coach coach = Coachservice.getCoachById(id);
-//		
-//		String oldPass = coach.getPassword();
-//		oldPass = BCryptManagerUtil.passwordEncoder().encode(oldPass);
-//		
-//		String newPass = resetPass.getPassword();
-//		System.out.println(id + " / " + oldPass + "/" + newPass);
-//		
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		
-//		if (passwordEncoder.matches(oldPass,newPass)) {			
-//			coach.setPassword(newPass);
-//			Coachservice.UpdateCoach(coach);
-//		}
-//	}
+	@RequestMapping(value = "/update-password/{id}", method = RequestMethod.POST)
+	public void updatePass(@PathVariable("id") Integer id, @RequestBody Coach updatePass) {
+
+		Coach coach = Coachservice.getCoachById(id);
+		String pass = updatePass.getPassword();
+		System.out.println(id + " / " + updatePass);
+		coach.setPassword(pass);
+
+		Coachservice.UpdateCoach(coach);
+	}
 }

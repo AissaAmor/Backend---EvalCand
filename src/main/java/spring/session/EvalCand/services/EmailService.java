@@ -51,7 +51,7 @@ public class EmailService {
 		mail.setTo(coach.getEmail());
 		mail.setSubject("Reset Password");
 		mail.setText(" hey there...follow the link below to reset your password and get back into your account"
-						+ "   http://localhost:4200/forget-password");
+						+ " http://localhost:4200/forget-password/" + coach.getId_coach());
 
 		/*
 		 * This send() contains an Object of SimpleMailMessage as an Parameter

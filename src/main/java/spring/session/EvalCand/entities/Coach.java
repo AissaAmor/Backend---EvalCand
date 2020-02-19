@@ -104,7 +104,7 @@ public class Coach {
 
 
 	public void setPassword(String password) {
-		this.password = BCryptManagerUtil.passwordEncoder().encode(password);
+		this.password = password;
 	}
 
 
