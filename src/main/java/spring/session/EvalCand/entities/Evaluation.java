@@ -129,4 +129,14 @@ public class Evaluation {
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
 
+	public void AjoutEvaluation(String string, Evaluation evaluation) {
+		
+		
+	}
+
+	public void put(String string, Evaluation evalById) {
+	
+		return   ;
+	}
+
 }

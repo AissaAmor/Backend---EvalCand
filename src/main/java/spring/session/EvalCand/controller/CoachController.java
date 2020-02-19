@@ -17,7 +17,7 @@ import spring.session.EvalCand.entities.JwtResponse;
 import spring.session.EvalCand.repositories.CoachRepository;
 import spring.session.EvalCand.services.CoachService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/coach")
 public class CoachController {
