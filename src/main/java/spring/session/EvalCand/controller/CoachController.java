@@ -26,7 +26,7 @@ import spring.session.EvalCand.services.CandidatService;
 import spring.session.EvalCand.services.CoachService;
 import spring.session.EvalCand.services.EmailService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/coach")
 public class CoachController {

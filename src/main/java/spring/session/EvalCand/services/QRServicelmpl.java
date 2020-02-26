@@ -18,7 +18,7 @@ public class QRServicelmpl implements QRService {
 		QRrepository.save(QR);
 		
 	}
-
+	
 	@Override
 	public void AjoutlistQR(List<QR> LQR) {
 		QRrepository.saveAll(LQR);	

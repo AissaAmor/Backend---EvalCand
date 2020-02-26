@@ -1,6 +1,6 @@
 package spring.session.EvalCand.entities;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 public class QR {
 
@@ -26,6 +24,8 @@ public class QR {
 	private String remarque;
 	private String Reponse;
 	private String ReponseCandidat;
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Id_evaluation")
 	private Evaluation evaluation;
@@ -120,4 +120,5 @@ public class QR {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
 				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" +
 				 ", evaluation=" + evaluation + "]";
-	}}
+	}
+}

@@ -1,13 +1,10 @@
 package spring.session.EvalCand.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 
 @Entity
 public class Codage {
@@ -18,12 +15,8 @@ public class Codage {
 	private String enonce;
 	private String reponse;
 	private String ReponseCandidat;
-	@ManyToOne	
+	@ManyToOne
 	private Evaluation evaluation;
-	
-	
-	
-	
 
 	public Codage(int id_Codage, String titre, String enonce, String reponse, String reponseCandidat,
 			Evaluation evaluation) {

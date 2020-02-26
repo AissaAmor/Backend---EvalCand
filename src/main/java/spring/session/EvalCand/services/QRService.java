@@ -11,4 +11,5 @@ public interface QRService {
 	public void AjoutlistQR(List<QR> LQR);	
 	public void AjoutNewlistQR(List<QR> LQR);
        
+
 }
