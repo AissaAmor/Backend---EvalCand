@@ -1,5 +1,8 @@
 package spring.session.EvalCand.entities;
 
+
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,9 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
+
 @Entity
 public class Evaluation {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Id_evaluation;
@@ -129,6 +133,14 @@ public class Evaluation {
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
 
+	public void AjoutEvaluation(String string, Evaluation evaluation) {
 		
+		
+	}
+
+	public void put(String string, Evaluation evalById) {
 	
+		return   ;
+	}
+
 }

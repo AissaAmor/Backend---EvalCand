@@ -1,7 +1,10 @@
 package spring.session.EvalCand.entities;
 
+
 import java.util.Arrays;
 import java.util.List;
+
+
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

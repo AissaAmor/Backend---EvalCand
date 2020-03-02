@@ -99,5 +99,6 @@ public class Language {
 		return "Language [Id_Language=" + Id_Language + ", Titre=" + Titre + ", enonce=" + enonce + ", reponse="
 				+ reponse + ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
 	}
+
 	
 }

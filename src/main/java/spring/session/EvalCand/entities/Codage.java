@@ -1,13 +1,10 @@
 package spring.session.EvalCand.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 
 @Entity
 public class Codage {
@@ -85,6 +82,5 @@ public class Codage {
 		return "Codage [Id_Codage=" + Id_Codage + ", Titre=" + Titre + ", enonce=" + enonce + ", reponse=" + reponse
 				+ ", ReponseCandidat=" + ReponseCandidat + ", evaluation=" + evaluation + "]";
 	}
-	
-	
+
 }
