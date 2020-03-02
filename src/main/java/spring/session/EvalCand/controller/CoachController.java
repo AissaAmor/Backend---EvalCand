@@ -57,14 +57,7 @@ public class CoachController {
 		Coachservice.AjoutCoach(coach);
 	}
 
-	// Ajout candidat - coach
-	@RequestMapping(path = "/addCandidat", method = RequestMethod.POST)
-	public void addCand(@RequestBody Candidat candidat) {
-		candidatservice.AjoutCandidat(candidat);
-
-	}
-
-	// Edit Coach
+	/* Edit Coach */
 	@PutMapping("/edit")
 	@ResponseBody
 	ResponseEntity<?> editCoach(@RequestBody Coach updateCoach) {
@@ -72,6 +65,13 @@ public class CoachController {
 		return new ResponseEntity<>("update done", HttpStatus.ACCEPTED);
 
 	}
+	// Ajout candidat - coach
+	@RequestMapping(path = "/addCandidat", method = RequestMethod.POST)
+	public void addCand(@RequestBody Candidat candidat) {
+		candidatservice.AjoutCandidat(candidat);
+
+	}
+
 
 //	@RequestMapping(path = "/all", method = RequestMethod.GET)
 //	public List<Coach> getAll() {
