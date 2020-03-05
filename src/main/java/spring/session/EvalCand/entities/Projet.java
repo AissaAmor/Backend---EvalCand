@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Projet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int Id_QR;
+	private int Id_Projet;
 	private String Titre;
 	private String enonce;
 	private String lienGit;
@@ -22,14 +22,13 @@ public class Projet {
 	private Evaluation evaluation;
 	
 	
-	public Projet(int id_QR, String titre, String enonce, String lienGit, Evaluation evaluation) {
-		super();
-		Id_QR = id_QR;
-		Titre = titre;
-		this.enonce = enonce;
-		this.lienGit = lienGit;
-		this.evaluation = evaluation;
-	}
+	public Projet(int id_Projet, String titre, String enonce, String lienGit) {
+	super();
+	Id_Projet = id_Projet;
+	Titre = titre;
+	this.enonce = enonce;
+	this.lienGit = lienGit;
+}
 
 
 	public Evaluation getEvaluation() {
@@ -42,27 +41,26 @@ public class Projet {
 	}
 
 
-	public int getId_QR() {
-		return Id_QR;
-	}
-
-
-
-	public void setId_QR(int id_QR) {
-		Id_QR = id_QR;
-	}
-
-
 
 	public String getTitre() {
 		return Titre;
 	}
 
 
-
 	public void setTitre(String titre) {
 		Titre = titre;
 	}
+
+	public int getId_Projet() {
+		return Id_Projet;
+	}
+
+
+	public void setId_Projet(int id_Projet) {
+		Id_Projet = id_Projet;
+	}
+
+
 
 
 
@@ -87,7 +85,7 @@ public class Projet {
 
 	@Override
 	public String toString() {
-		return "Projet [Id_QR=" + Id_QR + ", Titre=" + Titre + ", enonce=" + enonce + ", lienGit=" + lienGit
+		return "Projet [Id_Projet=" + Id_Projet + ", Titre=" + Titre + ", enonce=" + enonce + ", lienGit=" + lienGit
 				+ ", evaluation=" + evaluation + "]";
 	}
 

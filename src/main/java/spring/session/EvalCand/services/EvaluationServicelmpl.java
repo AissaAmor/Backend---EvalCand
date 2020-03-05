@@ -1,11 +1,16 @@
 package spring.session.EvalCand.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import spring.session.EvalCand.entities.Coach;
 import spring.session.EvalCand.entities.Evaluation;
 import spring.session.EvalCand.entities.Projet;
 import spring.session.EvalCand.entities.QR;
@@ -44,16 +49,16 @@ public class EvaluationServicelmpl implements EvaluationService {
 
 	@Override
 	public Evaluation getEvalById(Integer id) {
-		return Evaluationrepository.getOne(id);
+		return Evaluationrepository.findById(id).get();
 	}
-
-
+	
 	@Override
 	public List<Evaluation> getAll() {
 		
 		return Evaluationrepository.findAll() ;
 	}
 	
+
 	
 	
 	@Override
@@ -63,10 +68,12 @@ public class EvaluationServicelmpl implements EvaluationService {
 	}
 	
 	
+
 	@Override
 	public void duplicateEval(Evaluation evaluation ) {
 		Evaluationrepository.save(evaluation);
 	}
+
 
 	@Override
 	public void editEvaluation (Evaluation evaluation) {
@@ -77,6 +84,7 @@ public class EvaluationServicelmpl implements EvaluationService {
 	public void saveAll(Evaluation evaluations) {
 
 		Evaluationrepository.save(evaluations);
+
 
 		// Projets
 		List<Projet> projets = evaluations.getProjet();
@@ -96,4 +104,6 @@ public class EvaluationServicelmpl implements EvaluationService {
 			QRservice.AjoutQR(qr);
 		}
 	}
+
+	
 }

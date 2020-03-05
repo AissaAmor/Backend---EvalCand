@@ -27,12 +27,11 @@ public class QRServicelmpl implements QRService {
 	public void AjoutNewlistQR(List<QR> LQR) {
 		QRrepository.saveAll(LQR);	
 	}
+	
+	
+	
 	@Override
 	public void deleteQR(QR QR) {
 		QRrepository.delete(QR);
-		
 	}
-
-	
-
 }

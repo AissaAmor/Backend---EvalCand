@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import spring.session.EvalCand.entities.Coach;
 import spring.session.EvalCand.entities.Evaluation;
 import spring.session.EvalCand.entities.Projet;
@@ -22,6 +23,12 @@ import spring.session.EvalCand.entities.QR;
 import spring.session.EvalCand.services.EvaluationService;
 import spring.session.EvalCand.services.ProjetService;
 import spring.session.EvalCand.services.QRService;
+
+import spring.session.EvalCand.entities.Candidat;
+//import spring.session.EvalCand.entities.Evaluation;
+//import spring.session.EvalCand.entities.QR;
+//import spring.session.EvalCand.services.EvaluationService;
+//import spring.session.EvalCand.services.QRService;
 
 
 @CrossOrigin(origins = "*")
@@ -33,6 +40,7 @@ public class EvaluationController {
 	EvaluationService evaluationService;
 
 	@Autowired
+
 	QRService QRservice;
 
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
@@ -47,11 +55,21 @@ public class EvaluationController {
 		QRservice.AjoutlistQR(evaluation.getQr());
 	}
 
+	
+	// Path htt p://localhost:9200/evaluation/update-evaluation
+	
+//	@RequestMapping(path = "/update-evaluation", method = RequestMethod.POST)
 
-	// Path http://localhost:9200/evaluation/update-evaluation
-	@PutMapping("/update-evaluation")
+	@PutMapping("/update-evaluation" )
 	@ResponseBody
 	ResponseEntity<?> updateEvaluation(@RequestBody Evaluation newEvaluation) {
+		
+		for(int i = 0; i < newEvaluation.getQr().size(); i++) {
+			QR qr = newEvaluation.getQr().get(i);
+			qr.setEvaluation(newEvaluation);
+		}
+		QRservice.AjoutlistQR(newEvaluation.getQr());
+	
 		evaluationService.updateEvaluation(newEvaluation);
 		return new ResponseEntity<>("update done", HttpStatus.ACCEPTED);
 		
@@ -91,14 +109,28 @@ public class EvaluationController {
 	public List<Evaluation> getAll() {
 		return evaluationService.getAll();
 	}
+	
+	
+	
+	
+//	@RequestMapping("/edit")
+//	@ResponseBody
+//	public ResponseEntity<String> editEvaluation(@RequestBody Evaluation newEvaluation ) {
+//
+//		evaluationService.saveAll(newEvaluation);
+//		return new ResponseEntity<>("edit done", HttpStatus.ACCEPTED); 
+//	}
 
-	@RequestMapping("/edit")
-	@ResponseBody
-	public ResponseEntity<String> editEvaluation(@RequestBody Evaluation newEvaluation ) {
-
-		evaluationService.saveAll(newEvaluation);
-		return new ResponseEntity<>("edit done", HttpStatus.ACCEPTED); 
-	}
+//	
+//	@RequestMapping("/edit")
+//	@ResponseBody
+//	public ResponseEntity<String> editEvaluation(@RequestBody Evaluation newEvaluation ) {
+//		
+//		evaluationService.updateEvaluation(newEvaluation);
+//		return new ResponseEntity<>("edit done", HttpStatus.ACCEPTED);
+//	}
+//	
+	
 	
 //	@RequestMapping(path = "/duplicate2/{id}", method = RequestMethod.POST)
 //	public void duplicateEval(@PathVariable("id") int evaluationId) {
@@ -112,4 +144,33 @@ public class EvaluationController {
 //
 //		evaluationService.duplicateEval(evaluation2);
 //	}
+
+
+	
+	
+	
+//	@RequestMapping(path = "/duplicate", method = RequestMethod.POST)
+//	public void duplicateEval(@RequestBody Evaluation evaluation) { 
+//		
+//		Evaluation newEvaluation = new Evaluation(evaluation.getTitre(), evaluation.getEtat(),evaluation.getDuree(), evaluation.getQr());
+//		List<QR> newListe = new ArrayList<QR>();
+//		for(int i = 0; i < newEvaluation.getQr().size(); i++) {
+//			QR qr = new QR(evaluation.getQr().get(i).getTitre(), evaluation.getQr().get(i).getQuestion(), evaluation.getQr().get(i).getRemarque(), evaluation.getQr().get(i).getReponse(), evaluation.getQr().get(i).getReponseCandidat());
+//			qr.setEvaluation(newEvaluation);
+//			newListe.add(qr);
+//		}
+//		newEvaluation.setQr(newListe);
+//		evaluationService.duplicateEval(newEvaluation);
+//		
+//		qrservice.AjoutNewlistQR((newEvaluation.getQr()));
+//		
+//	}
+	
+	
+	@RequestMapping(path="/getEval/{id}", method = RequestMethod.GET)
+	public Evaluation getEvaluation(@PathVariable("id") Integer id) {
+		System.out.println(id);
+		return evaluationService.getEvalById(id);
+	}
+
 }

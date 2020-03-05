@@ -1,14 +1,19 @@
+
 package spring.session.EvalCand.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Evaluation {
@@ -21,6 +26,10 @@ public class Evaluation {
 	private String Etat;
 	private int Duree;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "Id_Candidat")
+	private Candidat candidat;
+	
 	@OneToMany(mappedBy = "evaluation", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
 	private List<QR> qr;
 
@@ -51,6 +60,8 @@ public class Evaluation {
 		this.codage = codage;
 		this.language = language;
 	}
+
+
 	public Evaluation(String titre, String etat, int duree, List<QR> qr) {
 		super();
 		Titre = titre;
@@ -119,6 +130,14 @@ public class Evaluation {
 		return Duree;
 	}
 
+	public Candidat getCandidat() {
+		return candidat;
+	}
+
+	public void setCandidat(Candidat candidat) {
+		this.candidat = candidat;
+	}
+
 	public void setDuree(int duree) {
 		Duree = duree;
 	}
@@ -129,14 +148,5 @@ public class Evaluation {
 				+ ", qr=" + qr + ", projet=" + projet + ", codage=" + codage + ", language=" + language + "]";
 	}
 
-	public void AjoutEvaluation(String string, Evaluation evaluation) {
-		
-		
-	}
-
-	public void put(String string, Evaluation evalById) {
-	
-		return   ;
-	}
-
 }
+

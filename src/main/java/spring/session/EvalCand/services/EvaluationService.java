@@ -15,15 +15,13 @@ public interface EvaluationService {
 	public void duplicateEval(Evaluation evaluation);
 
 	public Evaluation getEvalById(Integer id);
-	
-	public void editEvaluation (Evaluation evaluation);
-	
+
+	public void editEvaluation(Evaluation evaluation);
+
 	public void saveAll(Evaluation evaluation);
 
 	List<Evaluation> getAll();
 
 	List<Evaluation> editEvaluation();
-	
-
 
 }
