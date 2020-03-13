@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable()
 // dont authenticate this particular request
 				.authorizeRequests().antMatchers("/coach/authenticate", "/coach/add",
-						"/coach/forget-password", "/coach/reset-password/**","/coach/update-password/**")
+						"/coach/forget-password", "/coach/reset-password/**","/coach/update-password/** ","/evaluation/edit")
 				.permitAll().
 // all other requests need to be authenticated
 
@@ -63,3 +63,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 }
+
