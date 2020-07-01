@@ -12,12 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //import spring.session.exercice1.entities.Mission;
 
 @Entity
 public class Candidat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @JsonIgnore
 	private int Id_Candidat;
 	public List<Evaluation> getEvaluation() {
 		return evaluation;

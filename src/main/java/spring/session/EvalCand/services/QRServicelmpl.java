@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import spring.session.EvalCand.entities.QR;
 import spring.session.EvalCand.repositories.QRRepository;
 
@@ -34,4 +35,9 @@ public class QRServicelmpl implements QRService {
 	public void deleteQR(QR QR) {
 		QRrepository.delete(QR);
 	}
+
+//	@Override
+//	public void updatelistQr(ReponseCand reponse) {
+//		QRrepository.save(reponse);
+//	}
 }

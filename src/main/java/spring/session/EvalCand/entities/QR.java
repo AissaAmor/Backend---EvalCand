@@ -1,5 +1,6 @@
 package spring.session.EvalCand.entities;
 
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
 
 @Entity
 public class QR {
@@ -30,14 +28,10 @@ public class QR {
 	@JoinColumn(name = "Id_evaluation")
 	private Evaluation evaluation;
 
-
-
-	
 	public QR() {
 		super();
 	}
 
-	
 	public QR(String titre, String question, String remarque, String reponse, String reponseCandidat) {
 		super();
 		this.Titre = titre;
@@ -46,7 +40,6 @@ public class QR {
 		this.Reponse = reponse;
 		this.ReponseCandidat = reponseCandidat;
 	}
-
 
 	public QR(int id_QR, String titre, String question, String remarque, String reponse, String reponseCandidat,
 			List<QR> listQR, Evaluation evaluation) {
@@ -59,7 +52,6 @@ public class QR {
 		ReponseCandidat = reponseCandidat;
 		this.evaluation = evaluation;
 	}
-
 
 	public int getId_QR() {
 		return Id_QR;
@@ -108,17 +100,21 @@ public class QR {
 	public void setReponseCandidat(String reponseCandidat) {
 		ReponseCandidat = reponseCandidat;
 	}
+
 	@JsonIgnore
 	public Evaluation getEvaluation() {
 		return evaluation;
 	}
+
 	public void setEvaluation(Evaluation evaluation) {
 		this.evaluation = evaluation;
 	}
+
 	@Override
 	public String toString() {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
-				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" +
-				 ", evaluation=" + evaluation + "]";
+				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" + ", evaluation="
+				+ evaluation + "]";
 	}
-	}
+
+}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import spring.session.EvalCand.entities.Candidat;
 import spring.session.EvalCand.entities.Coach;
 import spring.session.EvalCand.entities.Evaluation;
+import spring.session.EvalCand.entities.Quiz;
 import spring.session.EvalCand.repositories.CandidatRepository;
 
 @Service("Candidatservice")
@@ -14,8 +15,8 @@ public class CandidatServicelmpl implements CandidatService{
 
 	
 	@Autowired
-	CandidatRepository candidatrepository ; 
-	
+	CandidatRepository candidatrepository ;
+
 	
 	@Override
 	public void AjoutCandidat(Candidat candidat) {
@@ -33,7 +34,32 @@ public class CandidatServicelmpl implements CandidatService{
 	public List<Candidat> getAll() {
 
 		return candidatrepository.findAll();
+		
 	}
+	
+	@Override
+	public void updateCandidat(Candidat candidat) {
+		candidatrepository.save(candidat);
+	
+	}
+	
+	
+	
+	
+	@Override
+	public Candidat getCandidatById(Integer id) {
+
+		return candidatrepository.findById(id).get();
+	}
+
+	
+	
+//	@Override
+//	public Evaluation AnswerEval(candidat cand) {
+//		return candidatrepository.findById(id).get();
+//	}
+	
+	
 //	@Override
 //	public void validateEval(Evaluation evaluation) {
 //		candidatrepository.save(evaluation);
