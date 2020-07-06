@@ -1,3 +1,4 @@
+
 package spring.session.EvalCand.entities;
 
 import java.util.List;
@@ -11,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,7 +34,9 @@ public class Evaluation {
 	private String Titre;
 	private String Etat;
 	private int Duree;
+
 	 @JsonIgnore
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Id_Candidat")
 	private Candidat candidat;
@@ -219,13 +221,7 @@ public class Evaluation {
 				+ ", qr=" + qr + ", projet=" + projet + ", quiz=" + quiz + " ]";
 	}
 
-	public void AjoutEvaluation(String string, Evaluation evaluation) {
+	
 
-	}
-
-//	public void put(String string, Evaluation evalById) {
-//	
-//		return   ;
-//	}
 
 }

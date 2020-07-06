@@ -1,6 +1,8 @@
 package spring.session.EvalCand.entities;
 
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,13 +26,16 @@ public class QR {
 	private String remarque;
 	private String Reponse;
 	private String ReponseCandidat;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Id_evaluation")
 	private Evaluation evaluation;
 
+
 	public QR() {
 		super();
 	}
+
 
 	public QR(String titre, String question, String remarque, String reponse, String reponseCandidat) {
 		super();
@@ -40,6 +45,7 @@ public class QR {
 		this.Reponse = reponse;
 		this.ReponseCandidat = reponseCandidat;
 	}
+
 
 	public QR(int id_QR, String titre, String question, String remarque, String reponse, String reponseCandidat,
 			List<QR> listQR, Evaluation evaluation) {
@@ -52,6 +58,7 @@ public class QR {
 		ReponseCandidat = reponseCandidat;
 		this.evaluation = evaluation;
 	}
+
 
 	public int getId_QR() {
 		return Id_QR;
@@ -109,12 +116,11 @@ public class QR {
 	public void setEvaluation(Evaluation evaluation) {
 		this.evaluation = evaluation;
 	}
-
 	@Override
 	public String toString() {
 		return "QR [Id_QR=" + Id_QR + ", Titre=" + Titre + ", Question=" + Question + ", remarque=" + remarque
-				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" + ", evaluation="
-				+ evaluation + "]";
+				+ ", Reponse=" + Reponse + ", ReponseCandidat=" + ReponseCandidat + ", listQR=" +
+				 ", evaluation=" + evaluation + "]";
 	}
-
 }
+

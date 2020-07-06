@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import spring.session.EvalCand.entities.Candidat;
 import spring.session.EvalCand.entities.Coach;
 
 @Service("EmailService")
@@ -58,7 +59,26 @@ public class EmailService {
 		 */
 		javaMailSender.send(mail);
 	}
+	public void sendEmailCandidat(Candidat candidat) throws MailException {
 
+		/*
+		 * This JavaMailSender Interface is used to send Mail in Spring Boot. This
+		 * JavaMailSender extends the MailSender Interface which contains send()
+		 * function. SimpleMailMessage Object is required because send() function uses
+		 * object of SimpleMailMessage as a Parameter
+		 */
+
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(candidat.getEmail());
+		mail.setSubject("Quiz Time");
+		mail.setText(" hey there...we have a test for you..when you are ready you can follow the link below"
+				+ " http://localhost:4200/typeEvalQr/");
+
+		/*
+		 * This send() contains an Object of SimpleMailMessage as an Parameter
+		 */
+		javaMailSender.send(mail);
+	}
 	/**
 	 * This fucntion is used to send mail that contains a attachment.
 	 * 

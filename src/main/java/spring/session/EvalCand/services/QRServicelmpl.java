@@ -1,3 +1,4 @@
+
 package spring.session.EvalCand.services;
 
 import java.util.List;
@@ -17,27 +18,22 @@ public class QRServicelmpl implements QRService {
 	@Override
 	public void AjoutQR(QR QR) {
 		QRrepository.save(QR);
-		
+
 	}
+
 	@Override
 	public void AjoutlistQR(List<QR> LQR) {
-		QRrepository.saveAll(LQR);	
+		QRrepository.saveAll(LQR);
 	}
-	
+
 	@Override
 	public void AjoutNewlistQR(List<QR> LQR) {
-		QRrepository.saveAll(LQR);	
+		QRrepository.saveAll(LQR);
 	}
-	
-	
-	
+
 	@Override
 	public void deleteQR(QR QR) {
 		QRrepository.delete(QR);
 	}
 
-//	@Override
-//	public void updatelistQr(ReponseCand reponse) {
-//		QRrepository.save(reponse);
-//	}
 }
