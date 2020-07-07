@@ -1,5 +1,7 @@
 package spring.session.EvalCand.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.session.EvalCand.entities.Projet;
@@ -10,17 +12,27 @@ public class ProjetServicelmpl implements ProjetService {
 
 	@Autowired
 	ProjetRepository Projetrepository;
-	
+
 	@Override
-	public void AjoutProjet(Projet Projet) {
-		Projetrepository.save(Projet);
+	public void ajoutListProjet(List<Projet> projet) {
+		Projetrepository.saveAll(projet);
 		
 	}
 
 	@Override
-	public void deleteProjet(Projet Projet) {
-		Projetrepository.delete(Projet);
+	public List<Projet> getAll() {
+	
+		return getAll();
+	}
+
+	@Override
+	public void ajoutListProjet(Projet projet) {
+		
 		
 	}
+	
+	
+
+	
 
 }

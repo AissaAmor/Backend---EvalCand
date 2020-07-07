@@ -1,3 +1,6 @@
+
+
+
 package spring.session.EvalCand.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @Configuration
 @EnableWebSecurity
@@ -63,4 +67,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 }
+
 
